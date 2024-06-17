@@ -1,0 +1,122 @@
+﻿<Window x:Class="BaoCaoBenhVien.DanhSachBenhNhan"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BaoCaoBenhVien"
+        mc:Ignorable="d"
+          xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}"
+      DataContext="{StaticResource  ListVM}"
+        WindowStartupLocation="CenterScreen"
+        Closed="Window_Closed"
+        Cursor="Pen"
+        Loaded="Window_Loaded"
+        Title="Danh sách bệnh nhân" Height="600" Width="1000">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedWindow_Command}" CommandParameter="{Binding ElementName=mainWinDow}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter  Property="FontWeight" Value="Bold" />
+                </Style>
+            </Grid.Resources>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontWeight="Bold" Padding="0 40" x:Name="RDO_Thongtin" Margin="100 0 0 0">Tìm kiếm bệnh nhân</TextBlock>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Orientation="Horizontal">
+                <StackPanel Margin="100 0 0 0">
+                    <TextBlock>Nhập số hồ sơ/ tên vợ / tên chồng</TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox TextChanged="TB_thongtin_TextChanged" x:Name="TB_thongtin" Width="150"></TextBox>
+                    </StackPanel>
+                </StackPanel>
+                
+                <Button x:Name="BTN_TIM" Click="BTN_TIM_Click" Width="60" Margin="20 0 0 0">Tìm</Button>
+
+            </StackPanel>
+            <StackPanel Margin="10 0 0 0" Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Width="60">Tổng số: </TextBlock>
+                <TextBox Text="" Width="150" x:Name="TB_Tongso" TextChanged="TB_Tongso_TextChanged"></TextBox>
+                <Button Margin="10 0 0 0" Command="{Binding Lietke_Command}">Liệt kê</Button>
+            </StackPanel>
+        </Grid>
+        <DataGrid  Grid.Row="1"
+                       SelectedIndex="0"
+                       CanUserAddRows="False" 
+                       CanUserDeleteRows="False" 
+                       AutoGenerateColumns="False" 
+                       IsReadOnly="True"
+                       Background="#F5F6F6" 
+                       SelectedItem="{Binding SelectedItem, Mode=TwoWay}"  
+                       Foreground="Black" 
+                       RowHeight="40"
+                       x:Name="DataGrid_Main"
+                       ItemsSource="{Binding  InfoAccounts}" 
+                        
+                                    
+                      
+                                   
+                      
+                       HorizontalAlignment="Stretch" 
+                       Width="auto" 
+                       Height="auto"  
+                       VerticalAlignment="Stretch"
+                                   >
+
+            <DataGrid.Resources>
+                <Style TargetType="ScrollBar">
+                    <Setter Property="Background" Value="Black" />
+                    <!-- or what ever color you may like-->
+                </Style>
+
+            </DataGrid.Resources>
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Width="auto" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" >
+                                <TextBlock Text="{Binding STT}"></TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate >
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Header="Số hồ sơ" Binding="{Binding MY_INFO_ACCOUNT.SoHoSo}" MinWidth="50"/>
+                <DataGridTextColumn Header="FM" Binding="{Binding MY_INFO_ACCOUNT.FM}" MinWidth="50"/>
+                <DataGridTextColumn Header="Họ tên vợ" Binding="{Binding MY_INFO_ACCOUNT.Hotenvo}" MinWidth="50"/>
+                <DataGridTextColumn Header="Năm sinh" Binding="{Binding MY_INFO_ACCOUNT.NSV}" MinWidth="50"/>
+
+                <DataGridTextColumn Header="M" Binding="{Binding MY_INFO_ACCOUNT.M}" MinWidth="50"/>
+                <DataGridTextColumn Header="Họ tên chồng" Binding="{Binding MY_INFO_ACCOUNT.Hotenchong}" MinWidth="50"/>
+                <DataGridTextColumn Header="Năm sinh" Binding="{Binding MY_INFO_ACCOUNT.NSC}" MinWidth="50"/>
+                <DataGridTextColumn Header="Bác sĩ tư vấn" Binding="{Binding MY_INFO_ACCOUNT.BacSiTheoDoi}" MinWidth="50"/>
+
+
+
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+    </Grid>
+</Window>

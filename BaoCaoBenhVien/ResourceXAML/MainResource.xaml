@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:viewmodel="clr-namespace:BaoCaoBenhVien.Viewmodel"
+                    xmlns:local="clr-namespace:BaoCaoBenhVien.ResourceXAML">
+
+    <viewmodel:MainViewModel x:Key="MainVM"></viewmodel:MainViewModel>
+    <viewmodel:DanhSachBenhNhanViewmodel x:Key="ListVM"></viewmodel:DanhSachBenhNhanViewmodel>
+    <viewmodel:QuaTrinhKhanViewModel x:Key="QTVM"></viewmodel:QuaTrinhKhanViewModel>
+
+
+</ResourceDictionary>

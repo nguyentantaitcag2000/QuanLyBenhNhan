@@ -1,0 +1,144 @@
+﻿<Window x:Class="BaoCaoBenhVien.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BaoCaoBenhVien"
+        mc:Ignorable="d"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}"
+      DataContext="{StaticResource  MainVM}"
+        Closed="Window_Closed"
+        Cursor="Pen"
+        WindowStartupLocation="CenterScreen"
+        Title="Khoa hỗ trợ sinh sản" Height="600" Width="900">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedWindow_Command}" CommandParameter="{Binding ElementName=mainWinDow}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="2.4*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="4*"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <Image  Source="Images/logo.png" Width="150" Height="140"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <TextBlock FontSize="30" HorizontalAlignment="Center" FontWeight="Bold">KHOA HỖ TRỢ SINH SẢN</TextBlock>
+                <TextBlock FontSize="25" HorizontalAlignment="Center">(ASSISTED REPRODUCTIVE DEPARTMENT)</TextBlock>
+                <TextBlock FontSize="20" HorizontalAlignment="Center">106 CMT8, P. Cái Khế, Q. Ninh Kiều, TPCT</TextBlock>
+                <TextBlock FontSize="20" HorizontalAlignment="Center">SĐT (Phone): 0292.3810032</TextBlock>
+                
+            </StackPanel>
+            <StackPanel  Grid.Column="2">
+                <StackPanel.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter  Property="FontWeight" Value="Bold" />
+                    </Style>
+                </StackPanel.Resources>
+                <TextBlock Padding="0 10 10 0" FontSize="15" HorizontalAlignment="Center">Số hồ sơ (Code):</TextBlock>
+                <TextBox FontSize="15" LostFocus="TEXT_CODE_LostFocus" x:Name="TEXT_CODE"></TextBox>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Width="30" Padding="0 10 10 0" FontSize="15" HorizontalAlignment="Center">FM:</TextBlock>
+                    <TextBox FontSize="15" LostFocus="TEXT_FM_LostFocus"  x:Name="TEXT_FM" Width="100"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock  Width="30" Padding="0 10 10 0" FontSize="15" HorizontalAlignment="Center">M:</TextBlock>
+                    <TextBox FontSize="15" LostFocus="TEXT_M_LostFocus" x:Name="TEXT_M" Width="100"></TextBox>
+                </StackPanel>
+                
+            </StackPanel>
+        </Grid>
+        <StackPanel Grid.Row="1" Margin="100 0 100 0">
+            <StackPanel.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter  Property="FontWeight" Value="Bold" />
+                </Style>
+                
+            </StackPanel.Resources>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Width="250" Padding="0 10 10 0" FontSize="15" HorizontalAlignment="Center">Họ tên vợ (Wife's full name):</TextBlock>
+                <TextBox FontSize="15" x:Name="TEXT_Wife"   Margin="0 10 0 0"  Width="500"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock  Padding="0 10 10 0" FontSize="15" HorizontalAlignment="Center">Năm sinh (YoB):</TextBlock>
+                    <TextBox FontSize="15" x:Name="Text_NSWife"   Margin="0 10 0 0"  Width="100"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock  Padding="0 10 10 0" FontSize="15" HorizontalAlignment="Center">SĐT (Phone):</TextBlock>
+                    <TextBox FontSize="15" x:Name="Text_PhoneWife"   Margin="0 10 0 0"  Width="200"></TextBox>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Width="250"  Padding="0 10 10 0" FontSize="15" HorizontalAlignment="Center">Họ tên chồng (Husband's full name):</TextBlock>
+                <TextBox FontSize="15" x:Name="TEXT_Husband" Margin="0 10 0 0" Width="500"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock  Padding="0 10 10 0" FontSize="15" HorizontalAlignment="Center">Năm sinh (YoB):</TextBlock>
+                    <TextBox FontSize="15" x:Name="Text_NSHusband" Margin="0 10 0 0"  Width="100"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock  Padding="0 10 10 0" FontSize="15" HorizontalAlignment="Center">SĐT (Phone):</TextBlock>
+                    <TextBox FontSize="15" x:Name="TEXT_PhoneHusband"  Margin="0 10 0 0"  Width="200"></TextBox>
+                </StackPanel>
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Width="160"  Padding="0 10 10 0" FontSize="15" HorizontalAlignment="Center">Địa chỉ (Adress):</TextBlock>
+                <TextBox FontSize="15"  x:Name="Text_Address"    Margin="0 10 0 0"  Width="500" AcceptsReturn="true" Height="80"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock VerticalAlignment="Center" Width="240"  Padding="0 10 10 0" FontSize="15" HorizontalAlignment="Center">Bác sĩ tư vấn (Consulting Doctor):</TextBlock>
+                <ComboBox
+                Grid.Row="2"
+                Width="200"
+                    Margin="0 10 0 0"
+                    FontSize="15"
+  IsEditable="True"
+                 x:Name="TEXT_BacSiTheoDoi"
+  materialDesign:HintAssist.HintOpacity=".26">
+                    <ComboBoxItem>Ths.BS. Nguyễn Phan Vinh</ComboBoxItem>
+                    <ComboBoxItem>BS.CKI. Trần Ngọc Thảo</ComboBoxItem>
+                    <ComboBoxItem>BS.CKI. Nguyễn Phúc Tùng</ComboBoxItem>
+                    <ComboBoxItem>BS.NT. Nguyễn Thị Thanh Dung</ComboBoxItem>
+                    <ComboBoxItem>BS. Nguyễn Thị Thanh Ngân</ComboBoxItem>
+                    <ComboBoxItem>BS. Nguyễn Thành Phước</ComboBoxItem>
+                    <ComboBoxItem>BS. Nguyễn Hoàng Thành</ComboBoxItem>
+                    <ComboBoxItem>BS. Trần Ngọc Long</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+        </StackPanel>
+        <Grid Grid.Row="2">
+
+            <StackPanel Margin="0 20 0 0 " Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1">
+                <Button Margin="0 0 10 0" Background="Green" Command="{Binding Add_Command}">Thêm</Button>
+                <Button Margin="0 0 10 0" Background="Red" Command="{Binding Delete_Command}">Xoá</Button>
+                <Button Margin="0 0 10 0" Command="{Binding Edit_Command}">Sửa</Button>
+                <Button Background="BlueViolet" Margin="0 0 10 0" Command="{Binding Clear_Command}">Clear</Button>
+                <Button Background="Blue" Margin="100 0 10 0 " Command="{Binding DanhSachBenhNhan_Command}">Xem các danh sách</Button>
+                <Button Background="DarkBlue" Command="{Binding QuaTrinhKham_Command}">Quá trình khám</Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+    
+</Window>

@@ -1,0 +1,181 @@
+﻿<Window x:Class="BaoCaoBenhVien.QuaTrinhKham"
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BaoCaoBenhVien"
+        mc:Ignorable="d"
+          xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}"
+      DataContext="{StaticResource  QTVM}"
+        WindowStartupLocation="CenterScreen"
+        Closed="Window_Closed"
+        Cursor="Pen"
+        Loaded="Window_Loaded"
+        Title="Quá trình khám" Height="600" Width="1000">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedWindow_Command}" CommandParameter="{Binding ElementName=mainWinDow}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Closed">
+            <i:InvokeCommandAction Command="{Binding ClosedWindow_Command}" CommandParameter="{Binding ElementName=mainWinDow}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="67*"/>
+            <ColumnDefinition Width="32*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.8*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="0.4*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="30 0 0 0" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="1.5*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal">
+                    <DatePicker
+                      Width="260"
+                    FontSize="15"
+                         x:Name="Text_Ngaykham" 
+                      materialDesign:HintAssist.Hint="Ngày khám (Date of examination)*"
+                      Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <DatePicker
+                      Width="240"
+                         x:Name="Text_Ngayhen" 
+                        FontSize="15"
+               
+                        
+                        Margin="50 0 0 0"
+                      materialDesign:HintAssist.Hint="Ngày hẹn (Appointment date)*"
+                      Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                </StackPanel>
+
+            </StackPanel>
+            <StackPanel Grid.Row="1" Orientation="Horizontal">
+                <StackPanel.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter  Property="FontWeight" Value="Bold" />
+                    </Style>
+                </StackPanel.Resources>
+                <TextBlock Width="160"  Padding="0 10 10 0" FontSize="15" HorizontalAlignment="Center">Nội dung hẹn (Details):</TextBlock>
+
+                <ComboBox
+                Grid.Row="2"
+                MinWidth="200"
+                    Margin="0 10 0 0"
+                    FontSize="15"
+  IsEditable="True"
+                    VerticalAlignment="Top"
+                 x:Name="Text_Noidunghen">
+                    <ComboBoxItem>Chụp HSG (Sau sạch kinh 2-3 ngày)</ComboBoxItem>
+                    <ComboBoxItem>Kích thích buồng trứng (XN nội tiết, Siêu âm đầu dò âm đạọ)</ComboBoxItem>
+                    <ComboBoxItem>Chọc hút noãn (Vợ nhịn ăn sáng, Chồng lấy tinh trùng, Có mặt lúc 7h)</ComboBoxItem>
+                    <ComboBoxItem>Báo phôi</ComboBoxItem>
+                    <ComboBoxItem>Chuyển phôi (Hẹn có mặt 7g30 chuyển phôi)</ComboBoxItem>
+                    <ComboBoxItem>Thử beta HCG (8g thử beta HCG)</ComboBoxItem>
+                    <ComboBoxItem>Siêu âm thai</ComboBoxItem>
+                    <ComboBoxItem>Tinh dịch đồ kiểm sau 1 tháng. Lưu ý: kiêng quan hệ 3-5 ngày trước khi kiểm tra tinh dịch đồ</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
+                <ComboBox
+                Grid.Row="2"
+                Width="200"
+                    FontSize="15"
+  materialDesign:HintAssist.Hint="Hướng điều chị (Treatment)*"
+  IsEditable="True"
+                 x:Name="TEXT_Huongdieutri"
+  materialDesign:HintAssist.HintOpacity=".26">
+                    <ComboBoxItem>IUI</ComboBoxItem>
+                    <ComboBoxItem>IVF</ComboBoxItem>
+                    <ComboBoxItem>IVF- Xin tinh trùng</ComboBoxItem>
+                    <ComboBoxItem>IVF - Xin noãn</ComboBoxItem>
+                    <ComboBoxItem>PESA/TESE</ComboBoxItem>
+                    <ComboBoxItem>Sinh Thiết Tinh Hoàn</ComboBoxItem>
+                </ComboBox>
+                <ComboBox
+                Grid.Row="2"
+                Width="250"
+                    FontSize="15"
+                    Margin="100 0 0 0"
+  materialDesign:HintAssist.Hint="Bác sĩ tư vấn (Consulting Doctor)"
+  IsEditable="True"
+                 x:Name="TEXT_BacSiKham"
+  materialDesign:HintAssist.HintOpacity=".26">
+                    <ComboBoxItem>Ths.BS. Nguyễn Phan Vinh</ComboBoxItem>
+                    <ComboBoxItem>BS.CKI. Trần Ngọc Thảo</ComboBoxItem>
+                    <ComboBoxItem>BS.CKI. Nguyễn Phúc Tùng</ComboBoxItem>
+                    <ComboBoxItem>BS.NT. Nguyễn Thị Thanh Dung</ComboBoxItem>
+                    <ComboBoxItem>BS. Nguyễn Thị Thanh Ngân</ComboBoxItem>
+                    <ComboBoxItem>BS. Nguyễn Thành Phước</ComboBoxItem>
+                    <ComboBoxItem>BS. Nguyễn Hoàng Thành</ComboBoxItem>
+                    <ComboBoxItem>BS. Trần Ngọc Long</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+
+        </Grid>
+        <DataGrid  Grid.Row="1"
+                       SelectedIndex="0"
+                       CanUserAddRows="False" 
+                       CanUserDeleteRows="False" 
+                       AutoGenerateColumns="False" 
+                       IsReadOnly="True"
+                       Background="#F5F6F6" 
+                       SelectedItem="{Binding SelectedItem, Mode=TwoWay}"  
+                       Foreground="Black" 
+                       RowHeight="40"
+                       x:Name="DataGrid_Main"
+                       SelectionChanged="DataGrid_Main_SelectionChanged"
+                       ItemsSource="{Binding  InfoAccounts}" 
+                       HorizontalAlignment="Stretch" 
+                       Width="auto" 
+                       Height="auto"  
+                       VerticalAlignment="Stretch" Grid.ColumnSpan="2"
+                                   >
+
+            <DataGrid.Resources>
+                <Style TargetType="ScrollBar">
+                    <Setter Property="Background" Value="Black" />
+                    <!-- or what ever color you may like-->
+                </Style>
+
+            </DataGrid.Resources>
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="Ngày khám&#10;(Date of examination)" Binding="{Binding Ngaykham}" MinWidth="50"/>
+                <DataGridTextColumn Header="Ngày hẹn&#10;(Appointment date)" Binding="{Binding Ngayhen}" MinWidth="50"/>
+                <DataGridTextColumn Header="Nội dung hẹn&#10;(Details)" Binding="{Binding Noidunghen}" MinWidth="50"/>
+                <DataGridTextColumn Header="Hướng điều trị&#10;(Treatment)" Binding="{Binding Huongdieutri}" MinWidth="50"/>
+                <DataGridTextColumn Header="Bác sĩ tư vấn&#10;(Consulting Doctor)" Binding="{Binding Doctor}" MinWidth="50"/>
+
+
+
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Margin="239,20,239,0" Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="2" Grid.ColumnSpan="2">
+            <Button Background="Green" Margin="10" Command="{Binding Add_Command}">Thêm</Button>
+            <Button Background="Red"  Margin="10" Command="{Binding Delete_Command}">Xoá</Button>
+            <Button Margin="10" Command="{Binding Edit_Command}">Sửa</Button>
+            <Button Background="BlueViolet" Margin="0 0 10 0" Command="{Binding Clear_Command}">Clear</Button>
+
+        </StackPanel>
+
+    </Grid>
+</Window>
